@@ -14,7 +14,6 @@
 
     customElements.define('com-sap-teched-gauge-41', class Gauge extends HTMLElement {
 
-
         disconnectedCallback () {
             // your cleanup code goes here
             try{
@@ -111,7 +110,6 @@
                 .attr("d", arcDef)
                 .attr( "fill-opacity", this._gaugeOpacity );
 
-
             ///////////////////////////////////////////
             //Lets build a border ring around the gauge
             ///////////////////////////////////////////
@@ -130,7 +128,6 @@
                 .attr("d", ringArcDefinition)
                 .attr("fill", this._ringColorCode)
                 .attr("transform", "translate(" + this._outerRad + "," + this._outerRad + ")");
-
 
             ///////////////////////////////////////////
             //Lets build a the start and end lines
@@ -151,7 +148,6 @@
 
         };
 
-
         //Helper function
         endPoints (lineLength, lineAngle){
             var pi = Math.PI;
@@ -159,7 +155,6 @@
             var endY = this._outerRad - (lineLength * Math.cos(lineAngle * (pi/180)));
             return {x:endX, y:endY}
         };
-
 
     });
 
