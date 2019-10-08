@@ -81,6 +81,7 @@
             .attr("d", arcDef)
             .attr( "fill-opacity", this._gaugeOpacity );
 
+
             /////////////////////////////////////////// 
             //Lets build a border ring around the gauge
             ///////////////////////////////////////////
@@ -100,6 +101,7 @@
             .attr("fill", this._ringColorCode)
             .attr("transform", "translate(" + this._outerRad + "," + this._outerRad + ")");
 
+            
             ///////////////////////////////////////////
             //Lets build a the start and end lines
             ///////////////////////////////////////////
@@ -116,7 +118,7 @@
             .attr("stroke", this._ringColorCode)
             .attr("stroke-width", this._bracketThickness)
             .attr("fill", "none");
-        }
+        };
 
         //Helper function 
         endPoints (lineLength, lineAngle){
