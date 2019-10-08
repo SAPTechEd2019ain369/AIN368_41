@@ -90,42 +90,42 @@
             var ringOuterRad = this._outerRad + ( -1 * this._ringThickness);  //Outer ring starts at the outer radius of the inner arc
 
             var ringArcDefinition = window._d3.arc()
-            .innerRadius(this._outerRad)
-            .outerRadius(ringOuterRad)
-            .startAngle(this._startAngleDeg * (pi/180)) //converting from degs to radians
-            .endAngle(this._endAngleDegMax * (pi/180)) //converting from degs to radians
+                .innerRadius(this._outerRad)
+                .outerRadius(ringOuterRad)
+                .startAngle(this._startAngleDeg * (pi/180)) //converting from degs to radians
+                .endAngle(this._endAngleDegMax * (pi/180)) //converting from degs to radians
 
             var ringArc = this._svgContainer
-            .append("path")
-            .attr("d", ringArcDefinition)
-            .attr("fill", this._ringColorCode)
-            .attr("transform", "translate(" + this._outerRad + "," + this._outerRad + ")");
+                .append("path")
+                .attr("d", ringArcDefinition)
+                .attr("fill", this._ringColorCode)
+                .attr("transform", "translate(" + this._outerRad + "," + this._outerRad + ")");
 
-            
+
             ///////////////////////////////////////////
             //Lets build a the start and end lines
             ///////////////////////////////////////////
             var visStartBracket = window._d3.select(this._shadowRoot).append("svg:svg").attr("width", "100%").attr("height", "100%");
             var lineData = [this.endPoints(this._outerRad, this._startAngleDeg), {x:this._outerRad, y:this._outerRad}, this.endPoints (this._outerRad, this._endAngleDegMax)];
             var lineFunction = window._d3.line()
-            .x(function(d) { return d.x; })
-            .y(function(d) { return d.y; });
+                .x(function(d) { return d.x; })
+                .y(function(d) { return d.y; });
                 
             var borderLines = this._svgContainer
-            .attr("width", this._widgetWidth).attr("height", this._widgetWidth) // Added height and width so line is visible
-            .append("path")
-            .attr("d", lineFunction(lineData))
-            .attr("stroke", this._ringColorCode)
-            .attr("stroke-width", this._bracketThickness)
-            .attr("fill", "none");
+                .attr("width", this._widgetWidth).attr("height", this._widgetWidth) // Added height and width so line is visible
+                .append("path")
+                .attr("d", lineFunction(lineData))
+                .attr("stroke", this._ringColorCode)
+                .attr("stroke-width", this._bracketThickness)
+                .attr("fill", "none");
         };
 
         //Helper function 
         endPoints (lineLength, lineAngle){
-        var pi = Math.PI;
-        var endX = this._outerRad + (lineLength * Math.sin(lineAngle * (pi/180)));
-        var endY = this._outerRad - (lineLength * Math.cos(lineAngle * (pi/180)));
-        return {x:endX, y:endY}
+            var pi = Math.PI;
+            var endX = this._outerRad + (lineLength * Math.sin(lineAngle * (pi/180)));
+            var endY = this._outerRad - (lineLength * Math.cos(lineAngle * (pi/180)));
+            return {x:endX, y:endY}
         };
     
     });
